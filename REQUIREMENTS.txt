@@ -1,0 +1,6 @@
+This library should work on PHP >= 4.0.2, but has been developed/tested only with PHP 5.4.4
+
+It requires the following PHP extensions :
+- php-curl
+- php-xmlrpc
+
