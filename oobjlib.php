@@ -40,7 +40,11 @@ class openerp_connection {
 
 	public function call($component, $method, $arg=null) {
 		$xmlrpc_connection = new xmlrpc_client('http://' . $this->url . '/xmlrpc/' . $component, $this->port);
-		return $xmlrpc_connection->call($method, $arg);
+		$res = $xmlrpc_connection->call($method, $arg);
+		if(is_array($res) && array_key_exists('faultCode', $res)) {
+			throw new Exception($res['faultCode']);
+		}
+		return $res;
 	}
 }
 
